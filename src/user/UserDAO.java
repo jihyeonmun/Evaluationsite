@@ -19,11 +19,11 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword))
-					return 1; //·Î±×ÀÎ ¼º°ø
+					return 1; //ë¡œê·¸ì¸ ì„±ê³µ
 				else
-					return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+					return 0; //ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜
 			}
-			return -1; //¾ÆÀÌµğ Á¸Àç x
+			return -1; //ì•„ì´ë”” ì¡´ì¬ x
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -34,10 +34,10 @@ public class UserDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return -2; //µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+		return -2; //ë°ì´í„° ë² ì´ìŠ¤ ì˜¤ë¥˜
 	}
 	
-	public int join (UserDTO user) {
+	public int join (User user) {
 		String sql = "INSERT INTO USER VALUES (?, ?, ?, ?, false)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -60,7 +60,7 @@ public class UserDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1; //È¸¿ø°¡ÀÔ ½ÇÆĞ(Áßº¹µÈ ¾ÆÀÌµğ)
+		return -1; //íšŒì›ê°€ì… ì‹¤íŒ¨(ì¤‘ë³µëœ ì•„ì´ë””)
 	}
 	
 	public String getUserEmail (String userID) {

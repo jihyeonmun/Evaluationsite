@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ page import = "user.UserDTO" %>
-<%@ page import = "user.UserDAO" %>
-<%@ page import = "util.SHA256" %>
-<%@ page import = "java.io.PrintWriter" %>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="user.*, util.*"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -40,7 +37,7 @@
 	}
 	
 	UserDAO userDAO = new UserDAO();
-	int result = userDAO.join(new UserDTO(userID, userPassword, userEmail, SHA256.getSHA256(userEmail), false));
+	int result = userDAO.join(new User(userID, userPassword, userEmail, SHA256.getSHA256(userEmail), false));
 	if(result == -1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

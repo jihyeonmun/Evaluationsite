@@ -1,15 +1,16 @@
 package user;
 
-public class UserDTO {
-	private String userID;
-	private String userPassword;
-	private String userEmail;
-	private String userEmailHash;
-	private boolean userEmailChecked;
+public class User {
+	String userID;
+	String userPassword;
+	String userEmail;
+	String userEmailHash;
+	boolean userEmailChecked;
 	
-	public UserDTO() {	
+	public User() {
 	}
-	public UserDTO(String userID, String userPassword, String userEmail, String userEmailHash,boolean userEmailChecked) {
+	
+	public User(String userID, String userPassword, String userEmail, String userEmailHash, boolean userEmailChecked) {
 		super();
 		this.userID = userID;
 		this.userPassword = userPassword;
@@ -17,7 +18,6 @@ public class UserDTO {
 		this.userEmailHash = userEmailHash;
 		this.userEmailChecked = userEmailChecked;
 	}
-	
 	
 	public String getUserID() {
 		return userID;
@@ -48,9 +48,5 @@ public class UserDTO {
 	}
 	public void setUserEmailChecked(boolean userEmailChecked) {
 		this.userEmailChecked = userEmailChecked;
-	}
-	
-	
-	
-	
+	}	
 }
