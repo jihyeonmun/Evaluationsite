@@ -7,6 +7,8 @@ JSP를 사용해 강의평가 사이트를 구현.
 ![main page](https://user-images.githubusercontent.com/38181303/42281582-f4cd6f76-7fde-11e8-9d6a-783c7676f4f3.png)
 
 ## 회원가입 및 이메일 인증
+- 사진 출처 : https://github.com/jeenie/LectureEvaluation_JSP
+
 <div>
 <img width= "400" src="https://user-images.githubusercontent.com/38181303/42099471-75ecdf0a-7bf8-11e8-8b60-5c31267db1a0.png">
 <img width= "400" src="https://user-images.githubusercontent.com/38181303/42100066-20a82f98-7bfa-11e8-9276-a0b32a4ebf86.png">
@@ -22,6 +24,8 @@ JSP를 사용해 강의평가 사이트를 구현.
 <img width= "400" src="https://user-images.githubusercontent.com/38181303/42285180-b4abc6f8-7fe9-11e8-8ce6-6050f2e8b8f4.png">
 </div>
 
+
+
 ## 구현한 것
 - 메인 페이지 디자인  
   - 강의 평가 데이터 DB 조회
@@ -36,6 +40,11 @@ JSP를 사용해 강의평가 사이트를 구현.
 - 미니 검색 엔진
 - 추천 및 강의 평가 삭제
 - XSS 방어
+
+## 팀프로젝트에서 추가할 기능
+- 댓글 기능
+- 카카오/구글/ 깃허브 / 로그인 
+- reCHAPCHA 등등
 
 ## 강의 사이트
 [출처] JSP 강의평가 웹사이트 개발하기  
