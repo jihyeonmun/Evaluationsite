@@ -8,7 +8,7 @@ import util.DatabaseUtil;
 
 public class UserDAO {
 	public int login (String userID, String userPassword) {
-		String sql = "SELECT userPassword FROM user Where userID = ?";
+		String sql = "SELECT userPassword FROM USER WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -19,11 +19,11 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword))
-					return 1; //로그인 성공
+					return 1; //濡쒓렇�씤 �꽦怨�
 				else
-					return 0; //비밀번호 불일치
+					return 0; //鍮꾨�踰덊샇 遺덉씪移�
 			}
-			return -1; //아이디 존재 x
+			return -1; //�븘�씠�뵒 議댁옱 x
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -34,10 +34,10 @@ public class UserDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return -2; //데이터 베이스 오류
+		return -2; //�뜲�씠�꽣 踰좎씠�뒪 �삤瑜�
 	}
 	
-	public int join (User user) {
+	public int join (UserDTO user) {
 		String sql = "INSERT INTO USER VALUES (?, ?, ?, ?, false)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -60,11 +60,11 @@ public class UserDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1; //회원가입 실패(중복된 아이디)
+		return -1; //�쉶�썝媛��엯 �떎�뙣(以묐났�맂 �븘�씠�뵒)
 	}
 	
 	public String getUserEmail (String userID) {
-		String sql = "SELECT userEmail FROM user WHERE userID = ?";
+		String sql = "SELECT userEmail FROM USER WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -89,7 +89,7 @@ public class UserDAO {
 	}
 	
 	public boolean getUserEmailChecked (String userID) {
-		String sql = "SELECT userEmailChecked FROM user WHERE userID = ?";
+		String sql = "SELECT userEmailChecked FROM USER WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -114,7 +114,7 @@ public class UserDAO {
 	}
 	
 	public boolean setUserEmailChecked (String userID) {
-		String sql = "UPDATE user SET userEmailChecked = true WHERE userID = ?";
+		String sql = "UPDATE USER SET userEmailChecked = true WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

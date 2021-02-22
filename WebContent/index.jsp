@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter, java.util.ArrayList, java.net.URLEncoder" %>
-<%@ page import="user.*, util.*,evaluation.*,likey.*" %>
+<%@ page import="user.*, evaluation.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 <!-- custom CSS 추가 -->
 <link rel="stylesheet" href="./css/custom.css">
 </head>
-<body>xRx
+<body>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String lectureDivide = "전체";
@@ -328,7 +328,7 @@
 		</div>
 	</div>
 	<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
-		Copyright &copy; 2018 지현 Rights Reserved.
+		Copyright &copy; 2018 jeenie Rights Reserved.
 	</footer>
 	<!-- jQuery 추가 -->
 	<script src="./js/jquery.min.js"></script>

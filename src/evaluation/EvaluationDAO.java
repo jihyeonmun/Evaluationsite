@@ -9,7 +9,7 @@ import util.DatabaseUtil;
 
 public class EvaluationDAO {
 	public int write (Evaluation evaluation) {
-		String sql = "INSERT INTO evaluation VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
+		String sql = "INSERT INTO EVALUATION VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -39,11 +39,11 @@ public class EvaluationDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return -1; //데이터 베이스 오류
+		return -1; 
 	}
 	
 	public ArrayList<Evaluation> getList (String lectureDivide, String searchType, String search, int pageNumber) {
-		if(lectureDivide.equals("전체") ) 
+		if(lectureDivide.equals("추천순") ) 
 			lectureDivide = "";
 		ArrayList<Evaluation> evaluationList = null;
 		String sql = "";
@@ -52,10 +52,10 @@ public class EvaluationDAO {
 		ResultSet rs = null;
 		try {
 			if(searchType.equals("최신순")) {
-				sql = "SELECT * FROM evaluation WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE "
+				sql = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE "
 						+ "? ORDER BY evaluationID DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
 			} else if (searchType.equals("추천순")) {
-				sql = "SELECT * FROM evaluation WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE "
+				sql = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE "
 						+ "? ORDER BY likeCount DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
 			}
 			conn = DatabaseUtil.getConnection();
@@ -93,11 +93,11 @@ public class EvaluationDAO {
 			try { if(rs != null) rs.close(); }
 			catch (Exception e) { e.printStackTrace(); }
 		}
-		return evaluationList; //데이터 베이스 오류
+		return evaluationList; 
 	}
 	
 	public int like(String evaluationID) {
-		String sql = "UPDATE evaluation SET likeCount = likeCount + 1 WHERE evaluationID = ?";
+		String sql = "UPDATE EVALUATION SET likeCount = likeCount + 1 WHERE evaluationID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -120,7 +120,7 @@ public class EvaluationDAO {
 	}
 	
 	public int delete(String evaluationID) {
-		String sql = "DELETE FROM evaluation WHERE evaluationID = ?";
+		String sql = "DELETE FROM EVALUATION WHERE evaluationID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -143,7 +143,7 @@ public class EvaluationDAO {
 	}
 	
 	public String getUserID(String evaluationID) {
-		String sql = "SELECT userID FROM evaluation WHERE evaluationID = ?";
+		String sql = "SELECT userID FROM EVALUATION WHERE evaluationID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

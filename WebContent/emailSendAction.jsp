@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, java.io.PrintWriter, javax.mail.internet.*, javax.mail.*"%>
-<%@ page import="user.*, util.*"%>
+<%@ page import="javax.mail.Transport" %>
+<%@ page import="javax.mail.Message" %>
+<%@ page import="javax.mail.Address"%>
+<%@ page import="javax.mail.internet.InternetAddress" %>
+<%@ page import="javax.mail.internet.MimeMessage" %>
+<%@ page import="javax.mail.Session" %>
+<%@ page import="javax.mail.Authenticator" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="user.UserDAO" %>
+<%@ page import="util.SHA256" %>
+<%@ page import="util.Gmail" %>
+<%@ page import="java.io.PrintWriter" %> 
 
 <%
 	UserDAO userDAO = new UserDAO();
@@ -21,7 +31,7 @@
 	}
 
 	boolean emailChecked = userDAO.getUserEmailChecked(userID);
-	if(emailChecked) {
+	if(emailChecked==true) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 인증 된 회원입니다.');");
@@ -31,9 +41,9 @@
 		return;
 	} 
 	
-	String host = "http://localhost:8080/Lecture_Evaluation/";
+	String host = "http://localhost:8080/sdfg/";
 	//보내는 사람
-	String from = "gno0929@gmail.com";
+	String from = "jhmoon1994@gmail.com";
 	//받는 사람
 	String to = userDAO.getUserEmail(userID);
 	//이메일 제목, 내용
@@ -43,7 +53,7 @@
 	
 	Properties p = new Properties();
 	p.put("mail.smtp.user", from);
-	p.put("mail.smtp.host", "smtp.googlemail.com");
+	p.put("mail.smtp.host", "smtp.gmail.com");
 	p.put("mail.smtp.port", "465");
 	p.put("mail.smtp.starttls.enable", "true");
 	p.put("mail.smtp.auth", "true");
